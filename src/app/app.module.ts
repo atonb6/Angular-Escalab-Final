@@ -13,6 +13,10 @@ import { SearchComponent } from './components/search/search.component';
 import { CardComponent } from './components/card/card.component';
 import { FormComponent } from './components/form/form.component';
 
+
+//Material
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,8 @@ import { FormComponent } from './components/form/form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
