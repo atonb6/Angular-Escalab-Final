@@ -12,10 +12,12 @@ import { FirestoreService } from "../../services/firestore.service";
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public myUser: User = {
-    email: "",
-    name: "",
-    phoneNumer: "",
-    uid: "",
+    email: '',
+    name: '',
+    phoneNumber: '',
+    newsletter: false,
+    comuna: '',
+    uid: ''
   };
   public uid: string;
   public serviceSuscription: Subject<boolean> = new Subject();
@@ -40,7 +42,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.myUser = {
           email: data.email,
           name: data.name,
-          phoneNumer: data.phoneNumer,
+          phoneNumber: data.phoneNumber,
+          newsletter: data.newsletter,
+          comuna: data.comuna,
           uid: data.uid,
         };
         console.log('myuser data -->', this.myUser);

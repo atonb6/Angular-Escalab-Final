@@ -21,23 +21,23 @@ export class LoggedGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    this.firebaseS.currentUser().then((resp) => {
-      if (resp.uid != null) {
+    | Observable<boolean | UrlTree>| Promise<boolean | UrlTree> | boolean | UrlTree {
+
+this.firebaseS.currentUser().then(resp => {
+      console.log('resp guard', resp);
+      if (resp != null) {
+        console.log('guard pass!!');
         this.logged = true;
       } else {
         this.logged = false;
-        window.alert("Ruta protegida");
-        this.router.navigate(["/login"]);
+        window.alert('Ruta protegida');
+        this.router.navigate(['/login']);
       }
-    }).catch(error =>{
-      console.log('error guard canActivate-->', error );
+    }).catch(error => {
+      console.log('error guard canActivate-->', error);
       this.logged = false;
       window.alert('Ruta protegida');
-      
+      return this.logged;
     })
     return this.logged;
   }

@@ -26,10 +26,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 //Material
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 //Forms
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PasswordDirective } from './directives/validations/password.directive';
 
 
 @NgModule({
@@ -46,18 +48,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     HomeComponent,
     NopageComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

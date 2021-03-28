@@ -11,13 +11,20 @@ import { FirestoreService } from '../../services/firestore.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public comunas: any[] = ['Santiago Centro', 'Macúl', 'Peñalolen', 'Ñuñoa'];
 
   get email() { return this.registerForm.get('email') };
   get pass() { return this.registerForm.get('pass') };
+  get name() { return this.registerForm.get('name') };
+  get phoneNumber() { return this.registerForm.get('phoneNumber') };
 
   public registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    pass: new FormControl('', [Validators.required])
+    pass: new FormControl('', [Validators.required]),
+    name: new FormControl(''),
+    comuna: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    newsletter: new FormControl(false)
   })
 
   constructor(
@@ -30,15 +37,17 @@ export class RegisterComponent implements OnInit {
 
   onRegister(){
     console.log('register -->', this.registerForm.value)
-    this.firebaseService.registerUser(this.registerForm.value.email, this.registerForm.value.pass).then(resp =>{
+    this.firebaseService.registerUser(this.registerForm.value.email, this.registerForm.value.pass).then(resp => {
       console.log('ok register');
       const newUser: User = {
         email: resp.email, 
-        name: '',
-        phoneNumer: '',
+        name: this.registerForm.value.name,
+        phoneNumber: this.registerForm.value.phoneNumber,
+        comuna: this.registerForm.value.comuna,
+        newsletter: this.registerForm.value.newsletter,
         uid: resp.uid
       }
-      this.firestoreService.createUser(newUser).then(resp=>{
+      this.firestoreService.createUser(newUser).then(resp => {
         console.log('new user register firestore -->', resp);
       }).catch(error =>{
         console.log('error register firestore -->', error);

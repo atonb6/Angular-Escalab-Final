@@ -6,11 +6,26 @@
         <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
           <div class="form-group">
             <input
+              type="text"
+              class="form-control"
+              placeholder="Name"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <input
               type="email"
               class="form-control"
               placeholder="email"
               formControlName="email"
             />
+          </div>
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="email.errors.required">Requerido</div>
+            <div *ngIf="email.errors.email">Formato Erroneo</div>
           </div>
           <div class="form-group">
             <input
@@ -21,19 +36,39 @@
             />
           </div>
           <div
-            *ngIf="email.invalid && (email.dirty || email.touched)"
-            class="alert alert-danger"
-          >
-            <span *ngIf="email.errors.required">El email es requerido</span>
-            <span *ngIf="email.errors.email">El formato del email es erroneo</span>
-          </div>
-          <div
             *ngIf="pass.invalid && (pass.dirty || pass.touched)"
             class="alert alert-danger"
           >
-            <span *ngIf="pass.errors.required">El password es requerido</span>
+            <div *ngIf="pass.errors.required">Requerido</div>
+            <div *ngIf="pass.errors.minlength">Six digit is minimum</div>
           </div>
-          <button [disabled]="registerForm.invalid" class="btn btn-primary btn-lg">
+          <div class="form-group">
+            <select class="form-control" formControlName="comuna">
+              <option *ngFor="let comuna of comunas" [value]="comuna">
+                {{ comuna }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="teléfono"
+              formControlName="phoneNumber"
+            />
+          </div>
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              formControlName="newsletter"
+            />
+            <label for="newsletter">Suscribe to newsletter?</label>
+          </div>
+          <button
+            [disabled]="registerForm.invalid"
+            class="btn btn-primary btn-lg"
+          >
             Ingresar
           </button>
         </form>
