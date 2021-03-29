@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Components
 import { HeaderComponent } from './components/header/header.component';
-import { ArtComponent } from './components/art/art.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SliderComponent } from './components/slider/slider.component';
@@ -33,6 +32,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordDirective } from './directives/validations/password.directive';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +44,6 @@ import { PasswordDirective } from './directives/validations/password.directive';
     SearchComponent,
     CardComponent,
     FormComponent,
-    ArtComponent,
     AuthentificationComponent,
     ContactComponent,
     HomeComponent,
@@ -61,7 +61,8 @@ import { PasswordDirective } from './directives/validations/password.directive';
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
