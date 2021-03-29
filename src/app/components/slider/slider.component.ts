@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArtComponent } from '../../art/components/art/art.component';
+import { ArtComponent } from '../../art/components/art/art.component';;
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
@@ -12,6 +12,7 @@ export class SliderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
