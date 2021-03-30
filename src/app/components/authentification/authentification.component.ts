@@ -20,7 +20,7 @@ export class AuthentificationComponent implements OnInit {
     pass: new FormControl('', [Validators.required, passwordValidation()])
   })
   constructor(
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
   ) { }
   
   ngOnInit() {

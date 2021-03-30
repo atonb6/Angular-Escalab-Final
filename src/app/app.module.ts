@@ -17,6 +17,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { NopageComponent } from './components/nopage/nopage.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SpinnerComponent } from "./animations/spinner/spinner.component";
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NopageComponent,
     RegisterComponent,
-    PasswordDirective
+    PasswordDirective,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

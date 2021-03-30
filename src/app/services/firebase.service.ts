@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: "root",
 })
 export class FirebaseService {
   constructor(
-    private angularFireAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth,
+    private router: Router
   ) { }
 
   async login(email: string, pass: string) {
@@ -16,9 +19,12 @@ export class FirebaseService {
       localStorage.setItem(
         'email', respAuth.user.email
       )
+      this.router.navigate(['home']);
       return respAuth;
     } catch (error) {
+      this.router.navigate(['login']);
       console.error('error auth -->', error);
+      alert('Contraseña o usuario incorrecto')
     }
   }
 
@@ -41,6 +47,7 @@ export class FirebaseService {
       return respRegister.user;
     } catch (error) {
       console.log('error registerUser -->', error);
+      alert('Usuario ya registrado')
     }
   }
 

@@ -31,13 +31,13 @@
             />
           </div>
 
-          <div
-            *ngIf="pass.invalid && (pass.dirty || pass.touched)"
-            class="alert alert-danger"
-          >
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
             <span *ngIf="pass.errors.required">El password es requerido</span>
+            <span *ngIf="pass.errors.passwordValidation">
+              {{pass.errors.passwordValidation.message}}
+            </span>
           </div>
-          <button [disabled]="loginForm.invalid" class="btn btn-primary btn-lg">
+          <button [disabled]="authForm.invalid" class="btn btn-primary">
             Ingresar
           </button>
         </form>

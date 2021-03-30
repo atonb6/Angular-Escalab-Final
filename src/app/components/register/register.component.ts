@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { FirebaseService } from '../../services/firebase.service';
 import { FirestoreService } from '../../services/firestore.service';
+import { passwordValidation } from '../../directives/validations/password.directive';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +11,9 @@ import { FirestoreService } from '../../services/firestore.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  seletedValue = 'Comuna';
 
-  public comunas: any[] = ['Santiago Centro', 'Macúl', 'Peñalolen', 'Ñuñoa'];
+  public comunas: any[] = ["Comuna", 'Santiago Centro', 'Macúl', 'Peñalolen', 'Ñuñoa'];
 
   get email() { return this.registerForm.get('email') };
   get pass() { return this.registerForm.get('pass') };
@@ -20,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   public registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    pass: new FormControl('', [Validators.required]),
+    pass: new FormControl('', [Validators.required, passwordValidation()]),
     name: new FormControl(''),
     comuna: new FormControl(''),
     phoneNumber: new FormControl(''),
@@ -29,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
   ) { }
 
   ngOnInit() {
@@ -49,8 +51,10 @@ export class RegisterComponent implements OnInit {
       }
       this.firestoreService.createUser(newUser).then(resp => {
         console.log('new user register firestore -->', resp);
+        alert('Usuario creado con éxito')
       }).catch(error =>{
         console.log('error register firestore -->', error);
+
       })
     })
   }

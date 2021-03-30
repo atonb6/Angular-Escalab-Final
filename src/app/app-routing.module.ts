@@ -5,6 +5,7 @@ import { ContactComponent } from "./components/contact/contact.component";
 import { HomeComponent } from "./components/home/home.component";
 import { NopageComponent } from "./components/nopage/nopage.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { SearchComponent } from "./components/search/search.component";
 import { LoggedGuard } from "./guards/logged.guard";
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "contacto", component: ContactComponent },
   { path: "login", component: AuthentificationComponent },
   { path: "register", component: RegisterComponent },
+  { path: "buscar", component: SearchComponent},
   { path: "**", component: NopageComponent, pathMatch: "prefix" },
 ];
 

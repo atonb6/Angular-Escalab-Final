@@ -2,18 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ArtRoutingModule } from './art-routing.module';
-import { ArtListComponent } from './components/art-list/art-list.component';
+import { ArtDepsComponent } from './components/art-deps/art-deps.component';
 import { ArtComponent } from './components/art/art.component';
+import { ArtallListComponent } from "./components/art-allList/art-allList.component";
+
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
-    ArtListComponent, 
-    ArtComponent
+    ArtDepsComponent, 
+    ArtComponent,
+    ArtallListComponent
   ],
   imports: [
     CommonModule,
-    ArtRoutingModule
+    ArtRoutingModule,
+    MatCardModule
   ]
 })
 export class ArtModule { }

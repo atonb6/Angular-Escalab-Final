@@ -2,18 +2,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArtComponent } from './components/art/art.component';
-import { ArtListComponent } from './components/art-list/art-list.component';
+import { ArtDepsComponent } from './components/art-deps/art-deps.component';
+import { ArtallListComponent } from "./components/art-allList/art-allList.component";
 
 const routes: Routes = [
   {
     path: '', children: [
       {
-        path: 'art-list', component: ArtListComponent,
+        path: 'art-deps', component: ArtDepsComponent,
         children: [
           { path: 'artSingle/:id', component: ArtComponent },
         ]
       }
-    ]
+    ],
+  },
+  {
+    path: '', children: [
+      {
+        path: 'art-list', component: ArtallListComponent
+      }
+    ],
   }
 ];
 

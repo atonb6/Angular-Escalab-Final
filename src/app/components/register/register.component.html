@@ -8,7 +8,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Name"
+              placeholder="nombre"
               formControlName="name"
             />
           </div>
@@ -35,16 +35,15 @@
               formControlName="pass"
             />
           </div>
-          <div
-            *ngIf="pass.invalid && (pass.dirty || pass.touched)"
-            class="alert alert-danger"
-          >
-            <div *ngIf="pass.errors.required">Requerido</div>
-            <div *ngIf="pass.errors.minlength">Six digit is minimum</div>
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
+            <span *ngIf="pass.errors.required">El password es requerido</span>
+            <span *ngIf="pass.errors.passwordValidation">
+              {{pass.errors.passwordValidation.message}}
+            </span>
           </div>
           <div class="form-group">
-            <select class="form-control" formControlName="comuna">
-              <option *ngFor="let comuna of comunas" [value]="comuna">
+            <select [(ngModel)]="seletedValue" class="form-control" formControlName="comuna">
+              <option ng-init="Comuna = options[2]" *ngFor="let comuna of comunas" [value]="comuna">
                 {{ comuna }}
               </option>
             </select>
@@ -63,11 +62,11 @@
               class="form-check-input"
               formControlName="newsletter"
             />
-            <label for="newsletter">Suscribe to newsletter?</label>
+            <label for="newsletter">¿Suscribirse al newsletter?</label>
           </div>
           <button
             [disabled]="registerForm.invalid"
-            class="btn btn-primary btn-lg"
+            class="btn btn-primary"
           >
             Ingresar
           </button>

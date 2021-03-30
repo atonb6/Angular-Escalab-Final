@@ -1,4 +1,4 @@
-export interface Allart {
+export interface AllDeps {
 
   "departments": {
     "departmentId": number;
