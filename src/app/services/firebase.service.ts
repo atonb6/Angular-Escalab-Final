@@ -7,9 +7,11 @@ import { Router } from '@angular/router';
   providedIn: "root",
 })
 export class FirebaseService {
+
   constructor(
+    
     private angularFireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
   ) { }
 
   async login(email: string, pass: string) {
@@ -44,6 +46,9 @@ export class FirebaseService {
     try {
       const respRegister = await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
       console.log('resp registerUser -->', respRegister);
+
+      this.isAuthenticated();
+
       return respRegister.user;
     } catch (error) {
       console.log('error registerUser -->', error);
@@ -59,6 +64,13 @@ export class FirebaseService {
     } catch (error) {
       console.log('error current user -->', error);
     }
+  }
+
+  isAuthenticated(): boolean {
+    if (localStorage.getItem('email')) {
+      return true;
+    }
+    return false;
   }
 
 }

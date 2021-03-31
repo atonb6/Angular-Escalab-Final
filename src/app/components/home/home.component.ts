@@ -4,6 +4,7 @@ import { takeUntil } from "rxjs/operators";
 import { User } from "src/app/interfaces/user";
 import { FirebaseService } from "../../services/firebase.service";
 import { FirestoreService } from "../../services/firestore.service";
+import { ArtService } from "../../services/art.service";
 
 @Component({
   selector: "app-home",
@@ -21,10 +22,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
   public uid: string;
   public serviceSuscription: Subject<boolean> = new Subject();
+  public imagesResults:string;
+
 
   constructor(
     private firebaseS: FirebaseService,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
+    private _obrasServices: ArtService,
+    
   ) {
     this.firebaseS.currentUser().then(async resp => {
       console.log('usuario actual -->', resp);
@@ -32,7 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     }).catch(error => {
       console.log('error calbackhell -->', error);
     })
+
+
+    this._obrasServices.getRandombras()
+      .subscribe((results: any) => {
+
+        this.imagesResults = results;
+        console.log(this.imagesResults );
+      });
   }
+  
 
   async ngOnInit() {
    this.firestoreService.getUser(this.uid)
@@ -49,8 +63,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         };
         console.log('myuser data -->', this.myUser);
       });
+    
     console.log('localstorage email -->', localStorage.getItem('email'));
 
+    
   }
 
   ngOnDestroy() {
