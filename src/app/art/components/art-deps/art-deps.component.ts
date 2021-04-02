@@ -9,7 +9,7 @@ import { ArtService } from "../../../services/art.service";
 })
 export class ArtDepsComponent implements OnInit {
 
-  public allDeps: AllDeps[];
+  public allDeps: any = {};
 
   constructor(
     private artService: ArtService

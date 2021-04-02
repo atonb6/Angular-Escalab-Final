@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Art } from "../interfaces/Art";
+import { Art } from "../interfaces/art";
 import { AllDeps } from "../interfaces/allDeps";
 import { AllList } from "../interfaces/allList";
 import { map } from "rxjs/operators";

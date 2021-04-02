@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
       this.firestoreService.createUser(newUser).then(resp => {
         console.log('new user register firestore -->', resp);
         alert('Usuario creado con éxito')
+        
       }).catch(error =>{
         console.log('error register firestore -->', error);
 

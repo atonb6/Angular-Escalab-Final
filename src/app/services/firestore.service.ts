@@ -24,7 +24,7 @@ export class FirestoreService {
 
   getUser(uid: string): Observable<User> {
     return new Observable(observer => {
-      this.fireStore.firestore.collection('users').where('uid', '==', uid).get().then(querySnapshot => {
+      this.fireStore.firestore.collection('users').where('uid','==', uid).get().then(querySnapshot => {
         querySnapshot.forEach(resp => {
           this.userBd = resp.data();
         })

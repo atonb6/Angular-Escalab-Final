@@ -7,9 +7,9 @@ import { ArtService } from "../../services/art.service";
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  public obra1:any;
-  public obra2:any;
-  public obra3:any;
+  public obra1:any = {};
+  public obra2:any = {};
+  public obra3:any = {};
   public art: ArtComponent;
 
   constructor(

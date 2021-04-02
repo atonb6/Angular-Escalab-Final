@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   providedIn: "root",
 })
 export class FirebaseService {
+  private isLogged = false;
 
   constructor(
     
@@ -48,7 +49,9 @@ export class FirebaseService {
       console.log('resp registerUser -->', respRegister);
 
       this.isAuthenticated();
+      this.router.navigate(['home']);
 
+      
       return respRegister.user;
     } catch (error) {
       console.log('error registerUser -->', error);
@@ -68,9 +71,13 @@ export class FirebaseService {
 
   isAuthenticated(): boolean {
     if (localStorage.getItem('email')) {
+      this.isLogged = true;
       return true;
+      
     }
+    this.isLogged = false;
     return false;
+      
   }
 
 }
