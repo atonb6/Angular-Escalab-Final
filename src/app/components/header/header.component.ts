@@ -16,8 +16,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
+
+  ngDoCheck(){
+    this.isLogged = this.firebaseS.isAuthenticated();
+  }
+
 
   toLogout() {
     this.firebaseS

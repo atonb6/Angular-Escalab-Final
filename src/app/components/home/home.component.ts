@@ -66,6 +66,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     console.log('localstorage email -->', localStorage.getItem('email'));
 
+
+    
     
   }
 
@@ -74,4 +76,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.serviceSuscription.next(false);
     this.serviceSuscription.complete();
   }
+
+
 }

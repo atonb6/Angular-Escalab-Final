@@ -47,9 +47,7 @@ export class FirebaseService {
     try {
       const respRegister = await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
       console.log('resp registerUser -->', respRegister);
-
-      this.isAuthenticated();
-      this.router.navigate(['home']);
+      this.router.navigate(['login']);
 
       
       return respRegister.user;

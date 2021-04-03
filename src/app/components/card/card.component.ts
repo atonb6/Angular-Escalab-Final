@@ -7,16 +7,21 @@ import { ArtService } from "../../services/art.service";
 })
 export class CardComponent implements OnInit {
   public obra:any = {};
-
+  public number = Math.floor((Math.random() * 100) + 1);
+  
   constructor(
     private _obrasServices: ArtService,
-  ) { }
+  ) { 
+  }
 
   @Input() counter: number;
 
   ngOnInit() {
 
-    this._obrasServices.getArtById(50).subscribe(respObra => {
+
+    console.log('number-->',this.number)
+    this._obrasServices.getArtById(this.number).subscribe(respObra => {
+      
       this.obra = respObra;
 
       console.log('ResponseID-->', respObra)
