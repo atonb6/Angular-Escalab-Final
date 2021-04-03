@@ -25,8 +25,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 //Material
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 //Forms
 import { FormsModule } from '@angular/forms';
@@ -34,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordDirective } from './directives/validations/password.directive';
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { NamePipe } from "./pipes/name.pipe";
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { HttpClientModule } from '@angular/common/http';
     NopageComponent,
     RegisterComponent,
     PasswordDirective,
-    SpinnerComponent
+    SpinnerComponent,
+    NamePipe
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ const routes: Routes = [
     path: "obras",
     loadChildren: () => import("./art/art.module").then((mod) => mod.ArtModule)
   },
-  { path: "contacto", component: ContactComponent },
+  { path: "contacto", component: ContactComponent, canActivate: [LoggedGuard]},
   { path: "login", component: AuthentificationComponent },
   { path: "register", component: RegisterComponent },
   { path: "buscar", component: SearchComponent},
