@@ -11,7 +11,8 @@ export class SliderComponent implements OnInit {
   public obra2:any = {};
   public obra3:any = {};
   public art: ArtComponent;
-
+  public number = Math.floor((Math.random() * 100) + 1);
+  
   constructor(
     private _obrasServices: ArtService,
   ) { }
